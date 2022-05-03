@@ -1,0 +1,10 @@
+version: "3"
+services:
+  server:
+    container_name: server
+    build: ./ # ビルド時のDockerfileの位置
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/go/src/go-jwt-auth # マウントするディレクトリの指定
+    # tty: true # コンテナの永続化
