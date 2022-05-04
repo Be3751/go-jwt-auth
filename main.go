@@ -7,9 +7,8 @@ import (
 
 func main() {
 	router := gin.Default()
-
 	router.POST("/signup", handlers.Signup)
 	router.POST("/login", handlers.Login)
-
+	router.GET("/who-you-are", handlers.WhoYouAre)
 	router.Run(":3000")
 }
