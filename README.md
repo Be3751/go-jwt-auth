@@ -1,2 +1,17 @@
 # go-jwt-auth
-JWTによる認証サーバー
+JWTを用いたトークンベースの認証機能を提供するサーバ
+
+## 使用技術
+Webサーバ：gin  
+インメモリDB：Redis（追加予定）  
+環境構築：Docker/docker-compose
+
+## 構成図
+<図を入れる>
+
+## 使用方法
+サービスの構築  
+`docker-compose build`  
+
+サービスの起動  
+`docker-compose up -d`
