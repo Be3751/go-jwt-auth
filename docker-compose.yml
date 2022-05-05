@@ -8,3 +8,10 @@ services:
     volumes:
       - ./:/go/src/go-jwt-auth # マウントするディレクトリの指定
     # tty: true # コンテナの永続化
+  db:
+    container_name: db
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data/redis:/data"
