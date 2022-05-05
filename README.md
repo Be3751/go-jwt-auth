@@ -2,8 +2,8 @@
 JWTを用いたトークンベースの認証機能を提供するサーバ
 
 ## 使用技術
-Webサーバ：gin  
-インメモリDB：Redis（追加予定）  
+APサーバ：gin  
+データベース：Redis
 環境構築：Docker/docker-compose
 
 ## 構成図
