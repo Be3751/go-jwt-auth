@@ -1,14 +1,15 @@
 package crypto
 
 import (
+	"os"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
 )
 
-const (
-	secret   = "secret"         // secret key to encrypt header.payload
-	lifetime = 30 * time.Minute // token's lifetime is set to 30 minutes
+var (
+	secret   = os.Getenv("SECRET_KEY") // secret key to encrypt header.payload
+	lifetime = 30 * time.Minute        // token's lifetime is set to 30 minutes
 )
 
 // Auth は署名前の認証トークン情報を表す。
