@@ -2,6 +2,8 @@ package model
 
 import (
 	"fmt"
+
+	"github.com/be3/go-jwt-auth/crypto"
 )
 
 type User struct {
@@ -10,7 +12,7 @@ type User struct {
 }
 
 func (user *User) Create() error {
-	err := Db.Set(Ctx, user.ID, user.PWD, 0).Err()
+	err := Db.Set(Ctx, user.ID, crypto.HashPwd(user.PWD), 0).Err()
 	if err != nil {
 		fmt.Println("Couldn't set the pair.: ", err)
 		panic(err)
@@ -52,7 +54,8 @@ func Authenticate(loginReq User) bool {
 		fmt.Println("No such user.")
 		return false
 	}
-	if loginReq.PWD != user.PWD {
+	fmt.Println("user pwd is", user.PWD)
+	if crypto.CompHashPwd(crypto.HashPwd(loginReq.PWD), user.PWD) {
 		return false
 	}
 	return true

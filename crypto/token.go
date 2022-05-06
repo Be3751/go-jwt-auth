@@ -35,8 +35,6 @@ func GenerateToken(userID string, now time.Time) (string, error) {
 		"expired_at": now.Add(lifetime).Unix(),
 	})
 
-	fmt.Println("secret key is", secret)
-
 	// 署名付きトークンの生成：header.payload.signature encorded by Base64
 	// header.payload -> signature encrypted by HS256 with a secret key
 	return token.SignedString([]byte(secret))
@@ -74,6 +72,7 @@ func readSecretKey(filePath string) (string, error) {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		text := scanner.Text()
+		// 開始行と終了行以外を対象に文字列を取得し連結
 		if text == "-----BEGIN SECRET KEY-----" || text == "-----END SECRET KEY-----" {
 			continue
 		}
