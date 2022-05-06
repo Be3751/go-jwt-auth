@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 )
 
+// 受け取ったパスワードをハッシュ化
 func HashPwd(pwd string) string {
 	hashedPwd := ""
 	b := []byte(pwd)
@@ -13,6 +14,7 @@ func HashPwd(pwd string) string {
 	return hashedPwd
 }
 
+// 受け取った平文をハッシュ化してデータベースのハッシュ値と照合
 func CompHashPwd(hash, pwd string) bool {
 	hashedPwd := HashPwd(pwd)
 	if hashedPwd != hash {
