@@ -73,7 +73,7 @@ func readSecretKey(filePath string) (string, error) {
 	for scanner.Scan() {
 		text := scanner.Text()
 		// 開始行と終了行以外を対象に文字列を取得し連結
-		if text == "-----BEGIN SECRET KEY-----" || text == "-----END SECRET KEY-----" {
+		if text == "-----BEGIN RSA PRIVATE KEY-----" || text == "-----END RSA PRIVATE KEY-----" {
 			continue
 		}
 		keyStr = keyStr + scanner.Text()
